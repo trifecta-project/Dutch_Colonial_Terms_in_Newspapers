@@ -106,25 +106,25 @@ class FilteringConfig:
         
     def print_filter_summary(self):
         """Print summary of active filters"""
-        print("🎯 MULTITHREADED FILTERS FOR 1880-1959:")
+        print("MULTITHREADED FILTERS FOR 1880-1959:")
         print("=" * 60)
-        print(f"🧵 Max Workers: {max_workers}")
-        print(f"🖥️  CPU Cores: {os.cpu_count()}")
-        print(f"📦 Batch Size: {records_per_batch}")
+        print(f"Max Workers: {max_workers}")
+        print(f"CPU Cores: {os.cpu_count()}")
+        print(f"Batch Size: {records_per_batch}")
         
         if self.enable_newspaper_filter:
-            print(f"📰 Newspaper Filter: {len(self.allowed_newspapers)} newspapers allowed")
+            print(f"Newspaper Filter: {len(self.allowed_newspapers)} newspapers allowed")
         
         if self.enable_date_filter:
-            print(f"📅 Date Filter: {self.start_date.strftime('%Y-%m-%d')} to {self.end_date.strftime('%Y-%m-%d')}")
+            print(f"Date Filter: {self.start_date.strftime('%Y-%m-%d')} to {self.end_date.strftime('%Y-%m-%d')}")
         
         if self.enable_content_filter:
-            print(f"📄 Content Filter: Types {self.required_content_types}")
+            print(f"Content Filter: Types {self.required_content_types}")
         
         if self.enable_geographic_filter:
-            print(f"🌍 Geographic Filter: {len(self.allowed_geographic_regions)} regions allowed")
+            print(f"Geographic Filter: {len(self.allowed_geographic_regions)} regions allowed")
         
-        print(f"📝 OCR Length Filter: {self.min_ocr_length}-{self.max_ocr_length} characters")
+        print(f"OCR Length Filter: {self.min_ocr_length}-{self.max_ocr_length} characters")
         print()
 
 # ==================== FILTERING FUNCTIONS ====================
@@ -582,11 +582,11 @@ def main():
     print("=" * 80)
     print("MULTITHREADED DELPHER FILTERED NEWSPAPER EXTRACTOR (1880-1959)")
     print("=" * 80)
-    print(f"🧵 Max Workers: {max_workers}")
-    print(f"🖥️  CPU Cores Available: {os.cpu_count()}")
-    print(f"📦 Records per batch: {records_per_batch}")
-    print(f"📅 Extracting from {start_year} to {current_year}")
-    print(f"📁 Output directory: {base_output_dir}")
+    print(f"Max Workers: {max_workers}")
+    print(f"CPU Cores Available: {os.cpu_count()}")
+    print(f"Records per batch: {records_per_batch}")
+    print(f"Extracting from {start_year} to {current_year}")
+    print(f"Output directory: {base_output_dir}")
     
     # Initialize filtering configuration
     config = FilteringConfig()
@@ -598,7 +598,7 @@ def main():
     # Generate years to process
     years = list(range(start_year, current_year + 1))
     
-    print(f"\n📋 Years to process: {len(years)}")
+    print(f"\nYears to process: {len(years)}")
     print(f"   {years}")
     
     # Confirm before starting
@@ -612,7 +612,7 @@ def main():
     successful_years = 0
     overall_filter_stats = {}
     
-    print(f"\n🚀 Starting multithreaded extraction...")
+    print(f"\nStarting multithreaded extraction...")
     
     # Process years sequentially (but batches within years in parallel)
     for i, year in enumerate(years, 1):
@@ -633,11 +633,11 @@ def main():
             
             year_duration = time.time() - year_start_time
             
-            print(f"✅ Year {year} COMPLETE: {files_saved:,} files in {year_duration/60:.1f} minutes")
+            print(f"Year {year} COMPLETE: {files_saved:,} files in {year_duration/60:.1f} minutes")
             
         except Exception as e:
-            logging.error(f"❌ FAILED to process year {year}: {e}")
-            print(f"❌ Year {year} FAILED: {e}")
+            logging.error(f"FAILED to process year {year}: {e}")
+            print(f"Year {year} FAILED: {e}")
             continue
     
     end_time = time.time()
@@ -645,15 +645,15 @@ def main():
     
     # Final summary
     print(f"\n" + "=" * 80)
-    print("🎉 MULTITHREADED EXTRACTION COMPLETE!")
+    print("MULTITHREADED EXTRACTION COMPLETE!")
     print("=" * 80)
-    print(f"⏱️  Total time: {total_duration/60:.1f} minutes ({total_duration/3600:.1f} hours)")
-    print(f"📄 Total files saved: {total_files:,}")
-    print(f"📈 Processing rate: {total_files/(total_duration/60):.1f} files/minute")
-    print(f"✅ Successful years: {successful_years}/{len(years)}")
+    print(f"Total time: {total_duration/60:.1f} minutes ({total_duration/3600:.1f} hours)")
+    print(f"Total files saved: {total_files:,}")
+    print(f"Processing rate: {total_files/(total_duration/60):.1f} files/minute")
+    print(f"Successful years: {successful_years}/{len(years)}")
     
     # Print filter statistics
-    print(f"\n📊 FILTER STATISTICS:")
+    print(f"\n FILTER STATISTICS:")
     print("=" * 50)
     total_processed = sum(overall_filter_stats.values())
     if total_processed > 0:
@@ -661,7 +661,7 @@ def main():
             percentage = (count / total_processed) * 100
             print(f"  {reason}: {count:,} ({percentage:.1f}%)")
     
-    print(f"\n🎯 Multithreading efficiency achieved!")
+    print(f"\nMultithreading efficiency achieved!")
     print(f"💾 Files saved to: {base_output_dir}")
 
 if __name__ == "__main__":
