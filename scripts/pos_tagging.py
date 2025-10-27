@@ -238,7 +238,7 @@ def test_keyword_tagging():
     """
     Test the keyword tagging functionality with sample sentences
     """
-    print("🧪 TESTING KEYWORD TAGGING FUNCTIONALITY")
+    print("TESTING KEYWORD TAGGING FUNCTIONALITY")
     print("=" * 50)
     
     # Test sentences with keywords
@@ -324,15 +324,15 @@ def main():
     print(f"Keywords to highlight: {len(ALL_KEYWORDS)}")
     
     if args.test:
-        print(f"🧪 TEST MODE: Processing only {args.test_rows} rows per file")
+        print(f"TEST MODE: Processing only {args.test_rows} rows per file")
     
     if args.threads:
-        print(f"🧵 Using {args.threads} threads")
+        print(f"Using {args.threads} threads")
     else:
-        print(f"🧵 Using default number of threads (max {min(multiprocessing.cpu_count(), 4)})")
+        print(f"Using default number of threads (max {min(multiprocessing.cpu_count(), 4)})")
     
     if args.single_file:
-        print("📄 SINGLE FILE MODE: Processing files one by one")
+        print("SINGLE FILE MODE: Processing files one by one")
     
     print()
     
@@ -357,7 +357,7 @@ def main():
             
             # Check if output file already exists
             if os.path.exists(output_path):
-                print(f"⚠️  Output file already exists: {output_path}")
+                print(f"Output file already exists: {output_path}")
                 response = input(f"Overwrite? (y/n): ").lower().strip()
                 if response != 'y':
                     print(f"Skipping {tsv_file}")
@@ -373,7 +373,7 @@ def main():
                             max_rows=args.test_rows if args.test else None,
                             num_threads=args.threads)
             
-            print(f"✅ File {tsv_file} processed successfully!")
+            print(f"File {tsv_file} processed successfully!")
             
             # Ask if user wants to continue (except for last file)
             if i < len(tsv_files):
@@ -414,11 +414,11 @@ def main():
             
             print()
     
-    print("✅ Processing complete!")
+    print("Processing complete!")
     print(f"Tagged files saved in: {output_dir}")
     
     if args.test:
-        print("\n🧪 TEST MODE COMPLETE")
+        print("\nTEST MODE COMPLETE")
         print("If the test results look good, run without --test flag to process all data.")
 
 # Additional utility functions for analysis
